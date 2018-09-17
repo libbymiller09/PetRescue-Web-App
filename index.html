@@ -5,39 +5,45 @@
     <meta name="viewport" content="width=device-width">
     <title>Pet Rescue</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"
+  type="text/javascript"></script> -->
   </head>
   <body>
-    <header role="banner">Banner</header>
+    <header role="banner">Find your perfect pet match!</header>
     <section class="carousel">
         <div class="thumbnails">
-          <img src="#">
-          <img src="#">
-          <img src="#">
+          <img src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?cs=srgb&dl=animal-cat-cute-46024.jpg&fm=jpg" class="catDogPic" alt="Cat and Dog being cute together">
+          <!-- <img src="#">
+          <img src="#"> -->
         </div>
     </section>
     <section class="search-form">
-      <form action="URL" class="search" method="post">
+      <form action="URL" class="searchForm" method="post">
         <fieldset name="search-form">
           <legend>Search Form</legend>
 
           <label for="typeOfPet">Type of pet: </label>
-          <input type="text" id="typePet" placeholder="Dog" required/>
+          <input type="text" class="js-query" placeholder="Dog" required/>
 
           <label for="location">Location: </label>
-          <input type="text" id="location" placeholder="Portland" required/>
+          <input type="text" class="js-query" placeholder="Portland" required/>
 
-          <button type="submit">Search Now!<input></button>
+          <button type="submit" id="searchButton">Search Now!</button>
         </fieldset>
       </form>
     </section>
     <section class="results">
-
+      <div class="js-results">
+      </div>  
     </section>
     <section class="map">
-
+      <img src="http://www.google.com/maps">
     </section>
+    
+    
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="index.js"></script>
+    
   </body>
-  <footer role="contentinfo">Created by <a href="">Elisabeth Miller 2018</a></footer>
+  <footer role="contentinfo">Created by <a href="">Elisabeth Miller</a> 2018</footer>
 </html>
