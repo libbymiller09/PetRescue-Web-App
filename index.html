@@ -5,20 +5,16 @@
     <meta name="viewport" content="width=device-width">
     <title>Pet Rescue</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"
-  type="text/javascript"></script> -->
+    
   </head>
   <body>
     <header role="banner">Find your perfect pet match!</header>
-    <section class="carousel">
-        <div class="thumbnails">
-          <ul>
-            <li class="slide"><img src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?cs=srgb&dl=animal-cat-cute-46024.jpg&fm=jpg" alt="Cat and Dog being cute together"></li>
-            <!-- <li class="slide"><img src="" alt=""></li>
-            <li class="slide"><img src="" alt=""></li> 
-            <li class="slide"><img src="" alt=""></li>  -->
-        </div>
-    </section>
+    <div class="carousel">
+      <div class="sdivde"><img src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?cs=srgb&dl=animal-cat-cute-46024.jpg&fm=jpg" alt="Cat and Dog being cute together"></div>
+      <div class="sdivde"><img src="https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cute kitten"></div>
+      <div class="sdivde"><img src="https://images.pexels.com/photos/464664/pexels-photo-464664.jpeg?auto=compress&cs=tinysrgb&h=350" alt="dog sniffing"></div> 
+      <div class="sdivde"><img src="https://images.pexels.com/photos/955470/pexels-photo-955470.jpeg?auto=compress&cs=tinysrgb&h=350" alt="dogs playing"></div> 
+    </div>
     <section class="search-form">
       <form action="URL" class="searchForm" method="post">
         <fieldset name="search-form">
@@ -38,13 +34,13 @@
       <div class="js-results">
       </div>  
     </section>
-    <section class="map">
-      <img src="https://www.google.com/maps">
+    <section class="js-map">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
     </section>
-    
     
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="index.js"></script>
+    
     
   </body>
   <footer role="contentinfo">Created by <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer>
