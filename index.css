@@ -2,9 +2,13 @@
     font-family: 'Indie Flower', cursive;
     box-sizing: border-box;
     color: #2e343b;
-    background: #5daee4;
+    /* background: #5daee4; */
   }
   
+/* * :not(#js-map) {
+  background: #5daee4;
+} */
+
   header {
     font-size: 25px;  
     padding: 10px;

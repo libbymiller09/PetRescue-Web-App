@@ -10,39 +10,41 @@
   </head>
   <body>
     <header role="banner">Find your perfect pet match!</header>
+
     <div class="headImage">
       <img src="https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="wide angle cat shot">
     </div>
+
     <section class="search-form">
       <form action="URL" class="searchForm" method="post">
         <fieldset name="search-form">
           <legend>Search Form</legend>
 
           <label for="typeOfPet">Type of pet: </label>
-          <input type="text" class="js-query" placeholder="Dog" required/>
+          <input type="text" id="typeOfPet" class="js-query" placeholder="Dog"/>
 
-          <label for="location">Location: </label>
-          <input type="text" class="js-query" placeholder="Portland"/>
+          <br>
 
           <label for="zip">Or Zip Code: </label>
-          <input type="number" class="js-query" placeholder="97217"/>
+          <input type="number" id="zip" class="js-query" placeholder="97217"/>
 
+          <br>
+          
           <button type="submit" id="searchButton">Search Now!</button>
         </fieldset>
       </form>
     </section>
+
     <section class="results">
-      <div class="js-results">
-      </div>  
     </section>
+
     <section id="js-map">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
     </section>
-    
+
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="index.js"></script>
-    
-    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
+
   </body>
   <footer role="contentinfo">Created by <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer>
 </html>
