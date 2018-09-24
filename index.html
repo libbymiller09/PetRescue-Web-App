@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width">
     <title>Pet Rescue</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     
   </head>
   <body>
     <header role="banner">Find your perfect pet match!</header>
-    <div class="carousel">
-      <div class="sdivde"><img src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?cs=srgb&dl=animal-cat-cute-46024.jpg&fm=jpg" alt="Cat and Dog being cute together"></div>
-      <div class="sdivde"><img src="https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&h=350" alt="cute kitten"></div>
-      <div class="sdivde"><img src="https://images.pexels.com/photos/464664/pexels-photo-464664.jpeg?auto=compress&cs=tinysrgb&h=350" alt="dog sniffing"></div> 
-      <div class="sdivde"><img src="https://images.pexels.com/photos/955470/pexels-photo-955470.jpeg?auto=compress&cs=tinysrgb&h=350" alt="dogs playing"></div> 
+    <div class="headImage">
+      <img src="https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="wide angle cat shot">
     </div>
     <section class="search-form">
       <form action="URL" class="searchForm" method="post">
@@ -24,7 +22,10 @@
           <input type="text" class="js-query" placeholder="Dog" required/>
 
           <label for="location">Location: </label>
-          <input type="text" class="js-query" placeholder="Portland" required/>
+          <input type="text" class="js-query" placeholder="Portland"/>
+
+          <label for="zip">Or Zip Code: </label>
+          <input type="number" class="js-query" placeholder="97217"/>
 
           <button type="submit" id="searchButton">Search Now!</button>
         </fieldset>
@@ -34,7 +35,7 @@
       <div class="js-results">
       </div>  
     </section>
-    <section class="js-map">
+    <section id="js-map">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
     </section>
     
