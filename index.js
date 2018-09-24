@@ -2,6 +2,53 @@
 
 const google_maps_url = 'https://maps.googleapis.com/maps/api/js?key=';
 const pet_finder_url = 'https://api.petfinder.com/pet.find';
+const pet_finder_shelter_url = 'https://api.petfinder.com/shelter.find';
+
+//function that retrieves the shelter id/location from the petfinder api
+function getShelterData(query) {
+    $.ajax({
+        url: pet_finder_shelter_url,
+        method: 'GET',
+        dataType: 'jsonp',
+        crossDomain: true,
+        data: {
+            key: '3fd075241e863aa486d764451a6a094d',
+            location: query.zip,
+            output: 'basic',
+            format: 'json'
+        },
+        success: (response) => handleShelterId(response)
+    });
+}
+
+//function that handles shelter results
+function handleShelterId(response) {
+    response.petfinder.shelter.id.forEach((shelter) => {
+        addShelterToMap();
+        addShelterToList({
+            name: shelters.shelter.name.$t,
+            city: shelters.shelter.city.$t,
+            longitude: shelters.shelter.longitude.$t,
+            latitude: shelters.shelter.latitude.$t,
+        })
+    })
+}
+
+//function to add shelter cordinates marker to map
+function addShelterToMap() {
+    console.log("write this function");
+}
+
+//function to add shelter to list
+function addShelterToList() {
+    console.log("write this function");
+    let newDiv = document.createElement('div');
+    
+    newName.textContent = shelters.shelter.name;
+        
+    document.querySelector('#shelter-results').appendChild(newDiv);
+}
+
 
 //function to access Rescue data from the user's search 
 function getDataFromPetFinderApi(query) {
@@ -56,10 +103,12 @@ function addPetToList(pet) {
 
 function resetForm() {
     console.log('TO DO!!! WRITE THIS FUNCTION')
+    // let query = queryTarget.value(""); 
 }
 
 function resetResultsList() {
     console.log('TODO !!!! WRITE THIS BAD BOY!')
+    // document.querySelector('.js-query').value("");
 }
 
 //   function that initializes and generates the map 
@@ -96,9 +145,12 @@ function watchSubmit() {
     };
 
     resetResultsList();
+    getShelterData(query);
     getDataFromPetFinderApi(query);
     resetForm();
   });
 }
 
 $(watchSubmit);
+
+
