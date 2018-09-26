@@ -71,9 +71,15 @@
     border-radius: 25px;
   }
 
-.results {
-  
+  .results div {
+  display: inline-block;
+  position: relative;
 }
+/* 
+.results div img {
+  height: 
+  width: 
+} */
 
   #js-map {
     display: block;

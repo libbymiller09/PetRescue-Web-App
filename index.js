@@ -23,29 +23,36 @@ function getShelterData(query) {
 
 //function that handles shelter results
 function handleShelterId(response) {
-    response.petfinder.shelter.id.forEach((shelter) => {
-        addShelterToMap();
+    response.petfinder.shelters.shelter.forEach((shelter) => {
+        addShelterToMap(response);
         addShelterToList({
-            name: shelters.shelter.name.$t,
-            city: shelters.shelter.city.$t,
-            longitude: shelters.shelter.longitude.$t,
-            latitude: shelters.shelter.latitude.$t,
+            name: shelter.name.$t,
+            city: shelter.city.$t,
+            longitude: shelter.longitude.$t,
+            latitude: shelter.latitude.$t,
         })
     })
 }
 
-//function to add shelter cordinates marker to map
-function addShelterToMap() {
-    console.log("write this function");
+//function to add shelter cordinates marker to map --needs to loop through the shelters and put each on the map
+function addShelterToMap(response) { 
+    for (let i = 0; i < response.petfinder.shelters.shelter.length; i++) {
+        let latLng = new google.maps.LatLng(response.petfinder.shelters.shelter.latitude, response.petfinder.shelters.shelter.longitude);
+        let marker = new google.maps.Marker({
+            position: latLng,
+        });
+    }
 }
 
 //function to add shelter to list
-function addShelterToList() {
-    console.log("write this function");
+function addShelterToList(shelter) {
     let newDiv = document.createElement('div');
+    let newName = document.createElement('p');
     
-    newName.textContent = shelters.shelter.name;
+    newName.textContent = shelter.name.$t;
         
+    newDiv.appendChild(newName);
+
     document.querySelector('#shelter-results').appendChild(newDiv);
 }
 
@@ -103,8 +110,8 @@ function addPetToList(pet) {
 
 function resetForm() {
     console.log('TO DO!!! WRITE THIS FUNCTION')
-    // let query = queryTarget.value(""); 
-}
+//     let query = queryTarget.value(""); 
+// }
 
 function resetResultsList() {
     console.log('TODO !!!! WRITE THIS BAD BOY!')
@@ -152,5 +159,3 @@ function watchSubmit() {
 }
 
 $(watchSubmit);
-
-
