@@ -1,10 +1,10 @@
-//API for google maps = AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4
-
-const google_maps_url = 'https://maps.googleapis.com/maps/api/js?key=';
+const apiKey = 'AIzaSyCPkdxPck9_Ifk7N417g8v3e4DKJQxxFUc';
+// const google_maps_url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+const google_maps_url = `http://maps.googleapis.com/maps/api/geocode/json?address=83%20Decathlon%20Circle%20Sacramento&key=${apiKey}`;
 const pet_finder_url = 'https://api.petfinder.com/pet.find';
 const pet_finder_shelter_url = 'https://api.petfinder.com/shelter.find';
 
-//function that retrieves the shelter id/location from the petfinder api
+//function that retrieves the shelter information from the petfinder api
 function getShelterData(query) {
     $.ajax({
         url: pet_finder_shelter_url,
@@ -14,48 +14,67 @@ function getShelterData(query) {
         data: {
             key: '3fd075241e863aa486d764451a6a094d',
             location: query.zip,
-            output: 'basic',
             format: 'json'
-        },
-        success: (response) => handleShelterId(response)
+        },   
+        success: (response) => handleShelterInfo(response)  
     });
 }
 
 //function that handles shelter results
-function handleShelterId(response) {
+function handleShelterInfo(response) {
+    if (response) {
+
+    }
+    console.log(response.petfinder.shelters.shelter.city);
     response.petfinder.shelters.shelter.forEach((shelter) => {
-        addShelterToMap(response);
+        
+        // findLatLng(response);
+        // addShelterToMap(response, location);
         addShelterToList({
-            name: shelter.name.$t,
-            city: shelter.city.$t,
-            longitude: shelter.longitude.$t,
-            latitude: shelter.latitude.$t,
-        })
+            name: shelter.name,
+            city: shelter.city,
+            longitude: shelter.longitude,
+            latitude: shelter.latitude,
+        });
+        geocodeLatLng(response);
     })
 }
 
 //function to add shelter cordinates marker to map --needs to loop through the shelters and put each on the map
-function addShelterToMap(response) { 
-    for (let i = 0; i < response.petfinder.shelters.shelter.length; i++) {
-        let latLng = new google.maps.LatLng(response.petfinder.shelters.shelter.latitude, response.petfinder.shelters.shelter.longitude);
-        let marker = new google.maps.Marker({
-            position: latLng,
-        });
-    }
-}
+// function addShelterToMap(response, location, map) { 
+//     response.petfinder.shelters.shelter.forEach((shelter) => {
+//         let latlng = {
+//             lat = response.petfinder.shelters.shelter.latitude,
+//             lng = response.petfinder.shelters.shelter.longitude
+//         }
+//         // let latlng = findLatLng(response);
+//         let marker = new google.maps.Marker({
+//             position: latlng,
+//             map: map
+//         });
+//     })    
+// }
 
 //function to add shelter to list
 function addShelterToList(shelter) {
     let newDiv = document.createElement('div');
     let newName = document.createElement('p');
+    let newCity = document.createElement('p');
+    let newLat = document.createElement('p');
+    let newLong = document.createElement('p');
     
     newName.textContent = shelter.name.$t;
+    newCity.textContent = shelter.city.$t;
+    newLat.textContent = shelter.latitude.$t;
+    newLong.textContent = shelter.longitude.$t;
         
     newDiv.appendChild(newName);
+    newDiv.appendChild(newCity);
+    newDiv.appendChild(newLat);
+    newDiv.appendChild(newLong);
 
     document.querySelector('#shelter-results').appendChild(newDiv);
 }
-
 
 //function to access Rescue data from the user's search 
 function getDataFromPetFinderApi(query) {
@@ -110,11 +129,11 @@ function addPetToList(pet) {
 
 function resetForm() {
     console.log('TO DO!!! WRITE THIS FUNCTION')
-//     let query = queryTarget.value(""); 
-// }
+    // let query = queryTarget.value(""); 
+}
 
 function resetResultsList() {
-    console.log('TODO !!!! WRITE THIS BAD BOY!')
+    console.log('TODO !!!! WRITE THIS FUNCTION!')
     // document.querySelector('.js-query').value("");
 }
 
@@ -133,11 +152,41 @@ function initMap() {
             center: portland
         }
     );
+    var geocoder = new google.maps.Geocoder;
+    var infowindow = new google.maps.InfoWindow;
 
-    // The marker, positioned at Portland
-    let marker = new google.maps.Marker({
-        position: portland, 
-        map: map,
+    document.getElementById('searchButton').addEventListener('click', function() {
+        geocodeLatLng(geocoder, map, infowindow);
+    });
+}   
+
+
+function geocodeLatLng(response, geocoder, map, infowindow) {
+    //need to match the value of latlng from geocode to petfinder value lat lng
+    // var input = document.getElementById('latlng').value;
+   var latlng = {
+       lat: response.petfinder.shelters.shelter.latitude.$t,
+       lng: response.petfinder.shelters.shelter.longitude.$t
+   }
+   var geocoder = new google.maps.Geocoder;
+
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          map.setZoom(11);
+             // Place Location Marker
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          infowindow.setContent(results[0].formatted_address);
+          infowindow.open(map, marker);
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
     });
   }
 
@@ -159,3 +208,6 @@ function watchSubmit() {
 }
 
 $(watchSubmit);
+
+	
+
