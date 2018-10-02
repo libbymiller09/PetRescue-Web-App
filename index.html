@@ -1,53 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Pet Rescue</title>
-    <link href="index.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    
-  </head>
-  <body>
-    <header role="banner">Find your perfect pet match!</header>
 
-    <div class="headImage">
-      <img src="https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="wide angle cat shot">
-    </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Pet Rescue</title>
+  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 
-    <section class="search-form">
-      <form action="URL" class="searchForm" method="post">
-        <fieldset name="search-form">
-          <legend>Search Form</legend>
+</head>
 
-          <label for="typeOfPet">Type of pet: </label>
-          <input type="text" id="typeOfPet" class="js-query" placeholder="Dog"/>
+<body>
+  <header role="banner">Find your perfect pet match!</header>
 
-          <br>
+  <div class="headImage">
+    <img src="https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      alt="wide angle cat shot">
+  </div>
 
-          <label for="zip">Or Zip Code: </label>
-          <input type="number" id="zip" class="js-query" placeholder="97217"/>
+  <section id="js-map">
+  </section>
 
-          <br>
+  <button class='open-search-form-button'>
+    X
+  </button>
 
-          <button type="submit" id="searchButton">Search Now!</button>
-        </fieldset>
-      </form>
-    </section>
+  <button class='open-results-panel-button'>
+    X
+  </button>
 
+  <section class="search-form">
+    <form action="URL" class="searchForm" method="post">
+      <fieldset name="search-form">
+        <legend>Search Form</legend>
+
+        <label for="typeOfPet">Type of pet: </label>
+        <input type="text" id="typeOfPet" class="js-query" placeholder="Dog" />
+
+        <br>
+
+        <label for="zip">Or Zip Code: </label>
+        <input type="number" id="zip" class="js-query" placeholder="97217" />
+
+        <br>
+
+        <button type="submit" id="searchButton">Search Now!</button>
+      </fieldset>
+    </form>
+    <button class='close-search-form-button'>X</button>
+  </section>
+
+  <div class='results-panel'>
     <section class="results">
     </section>
 
     <section id="shelter-results">
     </section>
 
-    <section id="js-map">
-    </section>
+    <button class='close-results-panel-button'>
+      X
+    </button>
+  </div>
 
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="index.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="index.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
 
-  </body>
-  <footer role="contentinfo">Created by <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer>
+</body>
+<footer role="contentinfo">Created by
+  <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer>
+
 </html>
