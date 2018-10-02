@@ -95,6 +95,7 @@ function getDataFromPetFinderApi(query) {
   });
 }
 
+//function that collects the needed results from the petfinder request 
 function handlePetsFindResult(response) {
   response.petfinder.pets &&
     response.petfinder.pets.pet &&
@@ -111,6 +112,7 @@ function handlePetsFindResult(response) {
     });
 }
 
+//function that creates a list of results from the petfinder request
 function addPetToList(pet) {
   let newDiv = document.createElement("div");
   let newName = document.createElement("a");
@@ -135,17 +137,18 @@ function addPetToList(pet) {
   document.querySelector(".results").appendChild(newDiv);
 }
 
+//function that clears the query from the form
 function resetForm() {
-  console.log("TO DO!!! WRITE THIS FUNCTION");
-  // let query = queryTarget.value("");
+  document.querySelector(".search-form").innerHTML = "";
 }
 
+//function that resets the results list
 function resetResultsList() {
   document.querySelector(".results").innerHTML = "";
   document.querySelector("#shelter-results").innerHTML = "";
 }
 
-//   function that initializes and generates the map
+//function that initializes and generates the map
 function initMap() {
   let portland = {
     lat: 45.5122,
@@ -166,7 +169,7 @@ function initMap() {
   // });
 }
 
-//function that matches latitude and longitude from petfinder api to geocode maps api and places a marker on the map
+//function that takes shelter longitude and latitude and puts it into a map marker for each shelter
 function addShelterToMap(shelter) {
   var marker = new google.maps.Marker({
     position: {
@@ -206,7 +209,7 @@ function highlightAnimalsInShelter(shelter) {
   });
 }
 
-//function that watches for the search now button to be clicked and runs the callback function
+//function that watches for the search now button to be clicked and runs the callback functions
 function watchSubmit() {
   $(".searchForm").submit(function(event) {
     event.preventDefault();
@@ -228,6 +231,7 @@ function watchSubmit() {
   });
 }
 
+//function that watches for the different menu navigation buttons to be clicked 
 function watchMenuButtons() {
   document
     .querySelector(".open-search-form-button")
@@ -254,22 +258,27 @@ function watchMenuButtons() {
     });
 }
 
+//function that when clicked opens the search form page
 function openSearchForm() {
   document.querySelector("body").classList.add("search-form-open");
 }
 
+//function that when clicked closes the search form page and goes back to the map page
 function closeSearchForm() {
   document.querySelector("body").classList.remove("search-form-open");
 }
 
+//function that when clicked opens the results page
 function openShelterResults() {
   document.querySelector("body").classList.add("results-panel-open");
 }
 
+//function that when clicked closes the results page and takes the user back to the map page
 function closeShelterResults() {
   document.querySelector("body").classList.remove("results-panel-open");
 }
 
+//handles both watch functions on the load of the page
 $(function() {
   watchSubmit();
   watchMenuButtons();

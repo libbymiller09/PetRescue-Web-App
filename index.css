@@ -2,7 +2,7 @@
   font-family: "Indie Flower", cursive;
   box-sizing: border-box;
   color: #2e343b;
-  /* background: #5daee4; */
+  font-size: 18px;
 }
 
 html {
@@ -107,13 +107,7 @@ label {
   position: relative;
 }
 
-footer {
-  font-size: 10px;
-  display: block;
-  position: relative;
-  margin-left: 80%;
-  margin-bottom: 0;
-}
+
 
 header,
 .headImage {
@@ -167,20 +161,29 @@ header,
 
 .open-search-form-button,
 .close-search-form-button {
-  background-color: lime;
+  background-color: #5daee4;
   position: absolute;
   right: 0;
   height: 50px;
   width: 50px;
   top: 50px;
+  font-size: 20px;
 }
 
 .open-results-panel-button,
 .close-results-panel-button {
-  background-color: lime;
+  background-color: #5daee4;
   position: absolute;
   left: 0;
   height: 50px;
-  width: 50px;
+  width: 100px;
   top: 50px;
+  font-size: 20px;
+}
+
+footer {
+  font-size: 10px;
+  display: block;
+  position: absolute;
+  margin-left: 80%;
 }
