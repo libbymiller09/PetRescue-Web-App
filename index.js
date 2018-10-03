@@ -50,11 +50,6 @@ function addShelterToList(shelter) {
   let newLat = document.createElement("p");
   let newLong = document.createElement("p");
 
-  newName.textContent = shelter.name.$t;
-  newCity.textContent = shelter.city.$t;
-  newLat.textContent = shelter.latitude.$t;
-  newLong.textContent = shelter.longitude.$t;
-
   newDiv.appendChild(newName);
   newDiv.appendChild(newCity);
   newDiv.appendChild(newLat);
@@ -105,8 +100,8 @@ function handlePetsFindResult(response) {
         name: pet.name.$t,
         img:
           pet.media.photos &&
-          pet.media.photos.photo[0] &&
-          pet.media.photos.photo[0].$t,
+          pet.media.photos.photo[2] &&
+          pet.media.photos.photo[2].$t,
         shelterId: pet.shelterId.$t
       });
     });
@@ -123,6 +118,7 @@ function addPetToList(pet) {
   if (pet.img) {
     let newImg = document.createElement("img");
     newImg.src = pet.img;
+    newImg.setAttribute("alt", "Pet image");
 
     newImg.onerror = () => {
       newImg.parentElement.removeChild(newImg);
@@ -131,7 +127,8 @@ function addPetToList(pet) {
     newDiv.appendChild(newImg);
   }
   newDiv.setAttribute("data-shelter-id", pet.shelterId);
-
+  newDiv.setAttribute("class", "pet-results");
+  
   newDiv.appendChild(newName);
 
   document.querySelector(".results").appendChild(newDiv);
@@ -276,6 +273,12 @@ function openShelterResults() {
 //function that when clicked closes the results page and takes the user back to the map page
 function closeShelterResults() {
   document.querySelector("body").classList.remove("results-panel-open");
+}
+
+//function that hides the no results div after results are generated
+function noResultsYet() {
+  //event listener that hides this div once other petfinder api requests are made
+  console.log("NEED TO WRITE THIS FUNCTION");
 }
 
 //handles both watch functions on the load of the page
