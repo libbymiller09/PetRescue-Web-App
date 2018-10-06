@@ -157,13 +157,6 @@ function initMap() {
     zoom: 12,
     center: portland
   });
-
-  // window.geocoder = new google.maps.Geocoder;
-  // window.infowindow = new google.maps.InfoWindow;
-
-  // document.getElementById('searchButton').addEventListener('click', function() {
-  //     geocodeLatLng(geocoder, map, infowindow);
-  // });
 }
 
 //function that takes shelter longitude and latitude and puts it into a map marker for each shelter
@@ -273,12 +266,6 @@ function openShelterResults() {
 //function that when clicked closes the results page and takes the user back to the map page
 function closeShelterResults() {
   document.querySelector("body").classList.remove("results-panel-open");
-}
-
-//function that hides the no results div after results are generated
-function noResultsYet() {
-  //event listener that hides this div once other petfinder api requests are made
-  console.log("NEED TO WRITE THIS FUNCTION");
 }
 
 //handles both watch functions on the load of the page
