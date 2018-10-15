@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Pet Rescue</title>
-  <link href="index.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
 
-
-</head>
-
-<body>
-  <main role="main" aria-live="polite">
-    <header role="banner">
-      <h1><img src="https://cdn2.iconfinder.com/data/icons/animals-86/128/4-512.png" alt="cat icon">Find Your New Best Friend!
-        <img src="https://cdn1.iconfinder.com/data/icons/supericon-animals-1/512/Dog_SC.png" alt="dog icon">
-      </h1>
-      
-    </header>
-
-    <section id="js-map">
-    </section>
-
-    <button class='open-search-form-button' type="button" role="button">
-      <i class="fa fa-search"></i>
-    </button>
-
-    <button class='open-results-panel-button' type="button" role="button">
-      Results
-    </button>
-
-    <section class="search-form">
-      <form action="URL" class="searchForm" method="post">
-        <fieldset name="search-form">
-          <legend>Search Form</legend>
-
-          <label for="typeOfPet">Type of pet: </label>
-          <input type="text" id="typeOfPet" class="js-query" placeholder="Dog" role="alert" aria-live="assertive"/>
-
-          <br>
-
-          <label for="zip">Zip Code: </label>
-          <input type="number" id="zip" class="js-query" placeholder="97217" role="alert" aria-live="assertive"/>
-
-          <br>
-
-          <button type="submit" id="searchButton" role="button">Search Now!</button>
-        </fieldset>
-      </form>
-      <button class='close-search-form-button' role="button">Map</button>
-    </section>
-
-    <div class='results-panel' role="alert" aria-live="assertive">
-      <section class="results">
-      </section>
-
-      <section id="shelter-results">
-      </section>
-
-      <button class='close-results-panel-button' role="button">
-        Map
-      </button>
-    </div>
-
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="index.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pet Rescue</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="float.grid.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Andika" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   
-  </main>
-</body>
+  </head>
 
-<!-- <footer role="contentinfo">Created by
-  <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer> -->
+  <body>
+    <main role="main" aria-live="polite">
+      <header role="banner">
+        
+        <h1>PetRescue<i class="far fa-heart"></i>Find Your New Best Friend!<i class="fas fa-paw"></i></h1>
+
+      </header>
+
+      <section id="js-map">
+      </section>
+
+      <button class='open-search-form-button' type="button" role="button">
+        <i class="fas fa-search-location"></i>
+      </button>
+
+      <button class='open-results-panel-button' type="button" role="button">
+        <i class="fas fa-paw"></i>
+      </button>
+
+      <section class="search-form">
+        <form action="URL" class="searchForm" method="post">
+          <fieldset name="search-form">
+            <legend>Search Form</legend>
+
+            <label for="typeOfPet">Type of pet: </label>
+            <input type="text" id="typeOfPet" class="js-query" placeholder="Dog" role="alert" aria-live="assertive"/>
+
+            <br>
+
+            <label for="zip">Zip Code: </label>
+            <input type="number" id="zip" class="js-query" placeholder="97217" role="alert" aria-live="assertive"/>
+
+            <br>
+
+            <button type="submit" id="searchButton" role="button">Search Now!</button>
+          </fieldset>
+        </form>
+        <button class='close-search-form-button' role="button">
+          <i class="fas fa-map-marked-alt"></i>
+        </button>
+
+        <img src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" id="catDogSnuggle" alt="cat and dog snuggling" aria-live="polite">
+
+      </section>
+
+      <div class='results-panel' role="alert" aria-live="assertive">
+        <section class="results">
+        </section>
+
+        <section id="shelter-results">
+        </section>
+
+        <button class='close-results-panel-button' role="button">
+          <i class="fas fa-search-location"></i>
+        </button>
+      </div>
+
+      <script src="https://code.jquery.com/jquery.min.js"></script>
+      <script src="index.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-FEEnkqYHiCzepPgtDMj_0hPfeignmM4&callback=initMap"></script>
+  
+    </main>
+
+    <footer role="contentinfo">Created by
+      <a href="https://github.com/libbymiller09?tab=repositories">Elisabeth Miller</a> 2018</footer>
+
+  </body>
 
 </html>

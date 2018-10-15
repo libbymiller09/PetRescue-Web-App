@@ -1,6 +1,5 @@
 const apiKey = "AIzaSyCPkdxPck9_Ifk7N417g8v3e4DKJQxxFUc";
-// const google_maps_url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-const google_maps_url = `http://maps.googleapis.com/maps/api/geocode/json?address=83%20Decathlon%20Circle%20Sacramento&key=${apiKey}`;
+const google_maps_url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 const pet_finder_url = "https://api.petfinder.com/";
 const pet_finder_shelter_url = "https://api.petfinder.com/shelter.find";
 
@@ -102,7 +101,12 @@ function handlePetsFindResult(response) {
           pet.media.photos &&
           pet.media.photos.photo[2] &&
           pet.media.photos.photo[2].$t,
-        shelterId: pet.shelterId.$t
+        shelterId: pet.shelterId.$t,
+        breeds: pet.breeds.breed.$t,
+        age: pet.age.$t,
+        description: 
+          pet.description &&
+          pet.description.$t,
       });
     });
 }
@@ -111,9 +115,29 @@ function handlePetsFindResult(response) {
 function addPetToList(pet) {
   let newDiv = document.createElement("div");
   let newName = document.createElement("a");
+  let newBreed = document.createElement("p");
+  let newAge = document.createElement("p");
+  let newDesc = document.createElement("p");
+  let newLink = document.createElement("a");
 
   newName.textContent = pet.name;
   newName.href = "https://www.petfinder.com/petdetail/" + pet.id;
+  newName.setAttribute("id", "adoptButton");
+
+  newBreed.textContent = pet.breeds;
+  newBreed.setAttribute("id", "breed");
+  newBreed.setAttribute("class", "petInfo");
+
+  newAge.textContent = pet.age;
+  newAge.setAttribute("id", "age");
+  newAge.setAttribute("class", "petInfo");
+  
+  newLink.textContent = "...See more";
+  newLink.href = "https://www.petfinder.com/petdetail/" + pet.id;
+
+  newDesc.textContent = pet.description + "..." + newLink;
+  // newDesc.textContent = pet.description.slice(0, 200).trim().concat('...') + newLink.text;
+  newDesc.setAttribute("class", "petDesc");
 
   if (pet.img) {
     let newImg = document.createElement("img");
@@ -130,13 +154,19 @@ function addPetToList(pet) {
   newDiv.setAttribute("class", "pet-results");
   
   newDiv.appendChild(newName);
+  newDiv.appendChild(newBreed);
+  newDiv.appendChild(newAge);
+  newDiv.appendChild(newDesc);
+  newDiv.appendChild(newLink);
 
   document.querySelector(".results").appendChild(newDiv);
 }
 
 //function that clears the query from the form
-function resetForm() {
-  document.querySelector(".search-form").innerHTML = "";
+function resetForm() {  
+  document.querySelector("body").classList.add("search-form-open");
+  document.querySelector("#typeOfPet").value = "";
+  document.querySelector("#zip").value = "";
 }
 
 //function that resets the results list
@@ -161,11 +191,19 @@ function initMap() {
 
 //function that takes shelter longitude and latitude and puts it into a map marker for each shelter
 function addShelterToMap(shelter) {
-  var marker = new google.maps.Marker({
+  let image = {
+    url: "https://techflourish.com/images/black-and-white-dog-bone-clipart-12.png",
+    scaledSize: new google.maps.Size(30, 30),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(0, 0)
+  };
+
+  let marker = new google.maps.Marker({
     position: {
       lat: parseFloat(shelter.latitude),
       lng: parseFloat(shelter.longitude)
-    }
+    },
+    icon: image,
   });
 
   marker.setMap(map);
@@ -190,8 +228,6 @@ function highlightAnimalsInShelter(shelter) {
         shelterElement.classList.remove("darken");
       }
     });
-
-  resetResultsList();
   getDataFromPetFinderApi({
     shelterId: shelter.id
   }).then(function() {
@@ -205,11 +241,11 @@ function watchSubmit() {
     event.preventDefault();
 
     window.query = {
-      typeOfPet: event.currentTarget.querySelector("#typeOfPet").value || "dog",
-      zip: event.currentTarget.querySelector("#zip").value || "97217"
+      typeOfPet: event.currentTarget.querySelector("#typeOfPet").value,
+      zip: event.currentTarget.querySelector("#zip").value
     };
 
-    resetResultsList();
+    // resetResultsList();
 
     Promise.all([getShelterData(query), getDataFromPetFinderApi(query)]).then(
       function() {
@@ -218,6 +254,7 @@ function watchSubmit() {
       }
     );
     resetForm();
+    resetResultsList();
   });
 }
 

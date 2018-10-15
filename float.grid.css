@@ -23,8 +23,11 @@
   .col-3, .col-4, .col-6, .col-12 {
     width: 100%;
   }
-  
-  
+
+  .col-3, .col4, .col-6, .col-12 .pet-results img {
+    width: 50%;
+  }
+
   @media only screen and (min-width: 640px) {
     .col-3 {
       width: 25%;
@@ -40,6 +43,10 @@
   
     .col-12 {
       width: 100%;
+    }
+
+    #zip {
+      margin-left: 30px;
     }
   }
   
