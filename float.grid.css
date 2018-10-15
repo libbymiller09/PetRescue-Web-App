@@ -24,8 +24,12 @@
     width: 100%;
   }
 
-  .col-3, .col4, .col-6, .col-12 .pet-results img {
-    width: 50%;
+  .petImg {
+    width: 50vw;
+  }
+
+  .petDesc {
+    line-height: 25px;
   }
 
   @media only screen and (min-width: 640px) {
@@ -47,6 +51,15 @@
 
     #zip {
       margin-left: 30px;
+    }
+
+    .petDesc {
+      line-height: 35px;
+      overflow: v;
+    }
+
+    .petImg {
+      width: 35vw;
     }
   }
   

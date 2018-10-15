@@ -114,7 +114,7 @@ fieldset label {
 }
 
 .pet-results img {
-  width: 35vw;
+  /* width: 35vw; */
   float: left;
   border-radius: 20px;
   padding: 10px;
@@ -129,44 +129,24 @@ fieldset label {
 
 .petDesc {
   font-size: 1.5vw !important;
-    overflow: hidden;
-    height: 100px;
-    line-height: 25px;
-    margin: 20px;
+  overflow: hidden;
+  height: 100px;
+  /* line-height: 25px; */
+  margin: 20px;
+  display: flex;
 }
-  
-  /* .petDesc:before {
-    content:"";
-    float: left;
-    width: 5px; height: 200px; }
-  
-  .petDesc > *:first-child {
-    float: right;
-    width: 100%;
-    margin-left: -5px; }		
-  
-  .petDesc:after {
-    content: "\02026";  
-  
-    box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-  
-    float: right; position: relative;
-    top: -25px; left: 100%; 
-    width: 3em; margin-left: -3em;
-    padding-right: 5px;
-    
-    text-align: right;
-  
-  /* margin-top: 50px;
-  max-width: 540px;	
-  overflow: hidden; */
-/* }  */
 
 .petInfo {
   margin-top: 5px;
   margin-bottom: 0;
+}
+
+#petLink {
+  text-decoration-style: dashed;
+}
+
+#petLink:hover {
+  color: green;
 }
 
 #adoptButton {

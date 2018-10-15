@@ -115,15 +115,41 @@ function handlePetsFindResult(response) {
 function addPetToList(pet) {
   let newDiv = document.createElement("div");
   let newName = document.createElement("a");
-  let newBreed = document.createElement("p");
-  let newAge = document.createElement("p");
   let newDesc = document.createElement("p");
   let newLink = document.createElement("a");
+  let newBreed = document.createElement("p");
+  let newAge = document.createElement("p");
+
+  newLink.textContent = "...See more";
+  newLink.setAttribute("id", "petLink");
+  newLink.setAttribute("href", "https://www.petfinder.com/petdetail/" + pet.id);
+
+  if (pet.description) {
+    let text = pet.description.slice(0, 200).trim().concat('...');
+    newDesc.textContent = text + newLink.text;
+    newDesc.setAttribute("class", "petDesc");
+
+    newDesc.onerror = () => {
+      newDesc.parentElement.removeChild(newDesc);
+    };
+  }
 
   newName.textContent = pet.name;
   newName.href = "https://www.petfinder.com/petdetail/" + pet.id;
   newName.setAttribute("id", "adoptButton");
 
+  if (pet.img) {
+    let newImg = document.createElement("img");
+    newImg.src = pet.img;
+    newImg.setAttribute("alt", "Pet image");
+    newImg.setAttribute("class", "petImg");
+
+    newImg.onerror = () => {
+      newImg.parentElement.removeChild(newImg);
+    };
+
+    newDiv.appendChild(newImg);
+  }
   newBreed.textContent = pet.breeds;
   newBreed.setAttribute("id", "breed");
   newBreed.setAttribute("class", "petInfo");
@@ -132,33 +158,15 @@ function addPetToList(pet) {
   newAge.setAttribute("id", "age");
   newAge.setAttribute("class", "petInfo");
   
-  newLink.textContent = "...See more";
-  newLink.href = "https://www.petfinder.com/petdetail/" + pet.id;
-
-  newDesc.textContent = pet.description + "..." + newLink;
-  // newDesc.textContent = pet.description.slice(0, 200).trim().concat('...') + newLink.text;
-  newDesc.setAttribute("class", "petDesc");
-
-  if (pet.img) {
-    let newImg = document.createElement("img");
-    newImg.src = pet.img;
-    newImg.setAttribute("alt", "Pet image");
-
-    newImg.onerror = () => {
-      newImg.parentElement.removeChild(newImg);
-    };
-
-    newDiv.appendChild(newImg);
-  }
+  
   newDiv.setAttribute("data-shelter-id", pet.shelterId);
   newDiv.setAttribute("class", "pet-results");
   
+  newDiv.appendChild(newDesc);
   newDiv.appendChild(newName);
   newDiv.appendChild(newBreed);
   newDiv.appendChild(newAge);
-  newDiv.appendChild(newDesc);
-  newDiv.appendChild(newLink);
-
+  
   document.querySelector(".results").appendChild(newDiv);
 }
 
