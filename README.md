@@ -5,7 +5,7 @@ PetRescue
 ## A web app built for helping users find and rescue pets in any area!
 
 ### Live-Demo
-GitHub PAges link!!!!!!
+https://libbymiller09.github.io/PetRescue-Web-App/
 
 ## Landing Page
 ![Landing Page](https://raw.githubusercontent.com/libbymiller09/PetRescue-Web-App/master/LandingPage.png?raw=true "Landing Page")
