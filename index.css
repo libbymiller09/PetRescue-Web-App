@@ -114,7 +114,6 @@ fieldset label {
 }
 
 .pet-results img {
-  /* width: 35vw; */
   float: left;
   border-radius: 20px;
   padding: 10px;
@@ -131,7 +130,6 @@ fieldset label {
   font-size: 1.5vw !important;
   overflow: hidden;
   height: 100px;
-  /* line-height: 25px; */
   margin: 20px;
   display: flex;
 }
@@ -152,7 +150,7 @@ fieldset label {
 #adoptButton {
   font-family: 'Amatic SC', cursive;
   font-weight: bold;
-  font-size: 8vw;
+  font-size: 7vw;
   display: flex;
   float: left;
   padding: 6px;

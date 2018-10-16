@@ -111,22 +111,17 @@ function handlePetsFindResult(response) {
     });
 }
 
-//function that creates a list of results from the petfinder request
+//function that creates the results page list of pets
 function addPetToList(pet) {
   let newDiv = document.createElement("div");
   let newName = document.createElement("a");
   let newDesc = document.createElement("p");
-  let newLink = document.createElement("a");
   let newBreed = document.createElement("p");
   let newAge = document.createElement("p");
 
-  newLink.textContent = "...See more";
-  newLink.setAttribute("id", "petLink");
-  newLink.setAttribute("href", "https://www.petfinder.com/petdetail/" + pet.id);
-
   if (pet.description) {
     let text = pet.description.slice(0, 200).trim().concat('...');
-    newDesc.textContent = text + newLink.text;
+    newDesc.textContent = text + "Click my name to see more!";
     newDesc.setAttribute("class", "petDesc");
 
     newDesc.onerror = () => {
@@ -252,8 +247,6 @@ function watchSubmit() {
       typeOfPet: event.currentTarget.querySelector("#typeOfPet").value,
       zip: event.currentTarget.querySelector("#zip").value
     };
-
-    // resetResultsList();
 
     Promise.all([getShelterData(query), getDataFromPetFinderApi(query)]).then(
       function() {
