@@ -1,3 +1,5 @@
+// jshint esversion:6
+
 const apiKey = "AIzaSyCPkdxPck9_Ifk7N417g8v3e4DKJQxxFUc";
 const google_maps_url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 const pet_finder_url = "https://api.petfinder.com/";
@@ -62,7 +64,9 @@ function addShelterToList(shelter) {
 //function to access Rescue data from the user's search
 function getDataFromPetFinderApi(query) {
   const data = {
-    key: "3fd075241e863aa486d764451a6a094d",
+    // key: "3fd075241e863aa486d764451a6a094d",
+    // secret: "7KrsD6YOWB4y5AAbhs95OQaAhkdEJMcPucztPCx7",
+    key: "xNAVJboHTN9WuhwsXmZzn7AhACWsherP04AP9UpGJBHogjCgiA",
     output: "basic",
     format: "json"
   };
@@ -89,7 +93,7 @@ function getDataFromPetFinderApi(query) {
   });
 }
 
-//function that collects the needed results from the petfinder request 
+//function that collects the needed results from the petfinder request
 function handlePetsFindResult(response) {
   response.petfinder.pets &&
     response.petfinder.pets.pet &&
@@ -104,7 +108,7 @@ function handlePetsFindResult(response) {
         shelterId: pet.shelterId.$t,
         breeds: pet.breeds.breed.$t,
         age: pet.age.$t,
-        description: 
+        description:
           pet.description &&
           pet.description.$t,
       });
@@ -152,21 +156,21 @@ function addPetToList(pet) {
   newAge.textContent = pet.age;
   newAge.setAttribute("id", "age");
   newAge.setAttribute("class", "petInfo");
-  
-  
+
+
   newDiv.setAttribute("data-shelter-id", pet.shelterId);
   newDiv.setAttribute("class", "pet-results");
-  
+
   newDiv.appendChild(newDesc);
   newDiv.appendChild(newName);
   newDiv.appendChild(newBreed);
   newDiv.appendChild(newAge);
-  
+
   document.querySelector(".results").appendChild(newDiv);
 }
 
 //function that clears the query from the form
-function resetForm() {  
+function resetForm() {
   document.querySelector("body").classList.add("search-form-open");
   document.querySelector("#typeOfPet").value = "";
   document.querySelector("#zip").value = "";
@@ -195,7 +199,7 @@ function initMap() {
 //function that takes shelter longitude and latitude and puts it into a map marker for each shelter
 function addShelterToMap(shelter) {
   let image = {
-    url: "https://techflourish.com/images/black-and-white-dog-bone-clipart-12.png",
+    url: "pawprint.png",
     scaledSize: new google.maps.Size(30, 30),
     origin: new google.maps.Point(0, 0),
     anchor: new google.maps.Point(0, 0)
@@ -259,7 +263,7 @@ function watchSubmit() {
   });
 }
 
-//function that watches for the different menu navigation buttons to be clicked 
+//function that watches for the different menu navigation buttons to be clicked
 function watchMenuButtons() {
   document
     .querySelector(".open-search-form-button")
