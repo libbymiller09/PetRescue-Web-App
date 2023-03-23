@@ -1,6 +1,6 @@
 // jshint esversion:6
 
-const apiKey = "AIzaSyCPkdxPck9_Ifk7N417g8v3e4DKJQxxFUc";
+const apiKey = "";
 const google_maps_url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 const pet_finder_url = "https://api.petfinder.com/";
 const pet_finder_shelter_url = "https://api.petfinder.com/shelter.find";
